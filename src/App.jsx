@@ -37,7 +37,7 @@ function getScrollPoistion() {
   console.log(all)
 
   if(y===all-300){
-    setItemsPerPage(itemsPerPage*2)
+    setItemsPerPage(itemsPerPage+5)
   }
   
   if(y<10){
