@@ -3,6 +3,7 @@ import {collection, getDocs, getDoc, deleteDoc, doc} from 'firebase/firestore'
 import {db} from './firebaseConfig/firebase'
 import { useEffect, useRef, useState } from 'react'
 import Create from './components/Create'
+import InputSearch from './components/InputSearch'
 
 function App() {
   //configuramos el hook para 
@@ -16,24 +17,36 @@ const [codigo, setCodigo] = useState()
 const [razonSocial, setRazonSocial] = useState()
 //fin crear
 
+const [objetos, setObjetos] = useState()
+
+//hook para buscar en tiempo real
+const [inputSearch, setInputSearch] = useState([])
+
+//filtrar
+const [filterPersonas, setFilterPersonas] = useState()
+
 //hook para saber si hay cambios
 const [cambio, setCambio] = useState(false)
 
 //hook para mostrar o cerrar el popup
 const [showPoppup, setShowPoppup] = useState(false)
 
-const divRef = useRef()
 const initialItem = 0
 const [itemsPerPage, setItemsPerPage] = useState(5)
 
 //esta funcion es para escuchar la posicion de nuestro escrol dentro del dify asignar un nueva cantidad de elementos a cargar
 function getScrollPoistion() {
-  var ContainerElement = document.getElementById("ContentContainer");
-  var y = ContainerElement.scrollTop;
-  if(y===129){
-    setItemsPerPage(itemsPerPage*2)
+  let ContainerElement = document.getElementById("ContentContainer");
+  let y = ContainerElement.scrollTop;
+  let all = ContainerElement.scrollHeight
+
+
+
+  if(y===all-300){
+    setItemsPerPage(itemsPerPage+5)
   }
-  if(y<129){
+  
+  if(y<10){
     setItemsPerPage(5)
   }
 }
@@ -50,8 +63,13 @@ function getScrollPoistion() {
     const data = await getDocs(personasCollection)
     //console.log(data.docs)
     setPersonas([...data.docs.map( (doc) => ({...doc.data(), id:doc.id}))].splice(initialItem,itemsPerPage))
-    console.log(personas)
+  
 }
+
+useEffect(() => {
+  setObjetos(personas)
+}, [personas])
+
 
 const addPeople = () => {
 setShowPoppup(true)
@@ -61,35 +79,49 @@ setShowPoppup(true)
 useEffect(()=>{
   getpersonas()
 }, [cambio, itemsPerPage])
-console.log(personas)
 
-  const objetos =  personas.map( (persona) => (
-    <li key={persona.id}>
-        <span>Nombre: <b>{persona.nombre}</b></span>
-        <span>Telefono: <b>{persona.telefono}</b> </span>
-        <span>NIT: <b>{persona.nit}</b></span>
-        <span>Codigo: <b>{persona.codigo}</b></span>
-        <span>Razon Social: <b>{persona.razonSocial}</b></span>
-    </li>
+
+
   
-))
 
+//busqueda en tiempo real
+useEffect(() => {
 
+  if(inputSearch.length !== 0) {
+    const filter = personas?.filter(obj => obj.nombre.toLowerCase().includes(inputSearch.toLowerCase()))
+    setObjetos(filter)
+    setItemsPerPage(100)
+  } else {
+  setObjetos(personas)
+  }
+}, [inputSearch])
 
-
-  return (
+return (
     <>
       <div className={showPoppup?'ShowPopPup': 'popPup'}>
-    <Create setShowPoppup={setShowPoppup} setCambio={setCambio}/>
+    <Create setShowPoppup={setShowPoppup} setCambio={setCambio} nombre={nombre} setNombre={setNombre}/>
     </div>
   <div className='nav'>
     <div className="dropdown">
     <p>Dropdown Module</p>
     <ul className="dropdown-content scroll" id="ContentContainer" onScroll={getScrollPoistion}>
   
-     <button onClick={addPeople} className="btn"> Agregar Nueva Persona</button>
-    
-      { objetos }
+     
+       <InputSearch setInputSearch={setInputSearch} setNombre={setNombre} addPeople={addPeople}/>
+      
+     
+      {
+        objetos?.map( (persona) => (
+          <li key={persona.id}>
+              <span>Nombre: <b>{persona.nombre}</b></span>
+              <span>Telefono: <b>{persona.telefono}</b> </span>
+              <span>NIT: <b>{persona.nit}</b></span>
+              <span>Codigo: <b>{persona.codigo}</b></span>
+              <span>Razon Social: <b>{persona.razonSocial}</b></span>
+          </li>
+        
+      ))
+      }
     
     </ul>
     
