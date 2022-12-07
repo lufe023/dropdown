@@ -9,12 +9,14 @@
 .nav{
   background-image: linear-gradient(47deg, hsla(0, 100%, 80%, 0.2), #fff 25%, rgba(255, 255, 255, 0.86) 50%, rgba(255, 255, 255, 0.74) 75%, hsla(0, 100%, 80%, 0.2));
   width: 100%;
-  height: 80px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
+
+
 .dropdown {
   position: relative;
   display: block;
@@ -55,7 +57,7 @@
 .dropdown-content li {
 display:  flex;
 flex-wrap: wrap;
-column-gap:20px;
+margin: 10px 0px;
 }
 
 .buscarParametro{
@@ -69,12 +71,12 @@ column-gap:20px;
   padding: 10px 16px;
 }
 .dropdown-content li{
- border-bottom: 1px solid rgb(180, 180, 180);
+  border-bottom: 1px solid rgb(240, 240, 240);
   cursor: pointer;
 }
 
 .dropdown-content li:hover{
-  background-color: #e53535;
+  background-color: #dd7676;
 }
 .dropdown_fotter{
   width: 160px;
@@ -110,4 +112,9 @@ display: none;
   overflow-x: hidden; 
   overflow-y: scroll;
   width: 100%; 
+}
+
+.input-search{
+  height: 25px;
+  margin: 5px;
 }

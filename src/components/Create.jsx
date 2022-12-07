@@ -3,8 +3,8 @@ import {collection, addDoc} from 'firebase/firestore'
 import {db} from '../firebaseConfig/firebase'
 import "./Create.css"
 
-const Create = ({setShowPoppup, setCambio}) => {
-const [nombre, setNombre] = useState()
+const Create = ({setShowPoppup, setCambio, nombre, setNombre}) => {
+
 const [telefono, setTelefono] = useState()
 const [nit, setNit] = useState()
 const [codigo, setCodigo] = useState()
