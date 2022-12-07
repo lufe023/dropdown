@@ -5,7 +5,7 @@ const InputSearch = ({setInputSearch, setNombre, addPeople}) => {
   const handleChange = e => {
     setInputSearch(e.target.value.trim())
     setNombre(e.target.value.trim())
-
+    
   }
   return (
     <div className='input__search__container'>
