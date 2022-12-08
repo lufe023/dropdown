@@ -4,17 +4,18 @@ import {db} from './firebaseConfig/firebase'
 import { useEffect, useRef, useState } from 'react'
 import Create from './components/Create'
 import InputSearch from './components/InputSearch'
+import './scroll.css'
 
 function App() {
   //configuramos el hook para 
   const [personas, setPersonas] = useState([])
 
 //importante para crear 
-const [nombre, setNombre] = useState()
-const [telefono, setTelefono] = useState()
-const [nit, setNit] = useState()
-const [codigo, setCodigo] = useState()
-const [razonSocial, setRazonSocial] = useState()
+const [nombre, setNombre] = useState('')
+const [telefono, setTelefono] = useState('')
+const [nit, setNit] = useState('')
+const [codigo, setCodigo] = useState('')
+const [razonSocial, setRazonSocial] = useState('')
 //fin crear
 
 const [objetos, setObjetos] = useState()

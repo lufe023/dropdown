@@ -1,0 +1,25 @@
+.dropdown-content::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.dropdown-content::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.dropdown-content::-webkit-scrollbar-button:increment,.dropdown-content::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.dropdown-content::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #e53535;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

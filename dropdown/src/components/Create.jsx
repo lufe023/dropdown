@@ -86,7 +86,7 @@ const store = async (e) =>{
                 className='form-control'
                 />
             </div>
-
+            
             <button type='submit' className='btn btn-guardar' onClick={close}>Guardar</button>
             </form>
             
