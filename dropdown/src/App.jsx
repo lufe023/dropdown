@@ -42,8 +42,10 @@ function getScrollPoistion() {
   let all = ContainerElement.scrollHeight
 
 
+  console.log(y)
+  console.log(all)
 
-  if(y===all-300){
+  if(y===all-290){
     setItemsPerPage(itemsPerPage+5)
   }
   
@@ -123,10 +125,10 @@ return (
         
       ))
       }
-    
     </ul>
     
 </div>
+
 </div>
     </>
   )
