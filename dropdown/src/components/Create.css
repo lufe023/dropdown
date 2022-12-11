@@ -25,6 +25,7 @@
     }
     
     .ShowPopPup{
+     
       position: absolute;
       backdrop-filter: blur(5px);
       width: 100%;

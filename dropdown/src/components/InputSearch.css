@@ -1,0 +1,28 @@
+.input-search{
+width: 60%;
+border: 0px;
+border-bottom: 1px solid #e53535;
+outline: none;
+transition: width 0.3s ease-in-out;
+}
+
+.input-search:focus{
+width: 70%;
+border-bottom: 2px solid #e53535;
+}
+
+.save{
+    font-size: 20px;
+}
+.save:hover{
+
+  border-bottom: 1px solid #e53535;
+}
+
+.input__search__container{
+    border-bottom: 1px solid #f6f6f6;
+    background-color: white;
+    position:sticky;
+    top: -10px;
+    padding: 10px 0;
+}

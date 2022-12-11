@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './InputSearch.css'
 const InputSearch = ({setInputSearch, setNombre, addPeople}) => {
 
   const handleChange = e => {
@@ -12,7 +12,7 @@ const InputSearch = ({setInputSearch, setNombre, addPeople}) => {
     <div className='input__search__container'>
       <h3 className='search__title'>Buscar Objeto</h3>
    
-      <input className='input-search' onChange={handleChange} type='text' placeholder='Buscar objeto por nombre'/><a onClick={addPeople} className="btn"> <i className="fa-regular fa-floppy-disk" alt="Agregar nueva empresa"></i></a>
+      <input className='input-search' onChange={handleChange} type='text' placeholder='Buscar objeto por nombre'/><a onClick={addPeople} className="btn save"> <i className="fa-regular fa-floppy-disk" alt="Agregar nueva empresa"></i></a>
 
     </div>
   
